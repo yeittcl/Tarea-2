@@ -1,6 +1,16 @@
 public class Expendedora {
     private int numBebida;
     private int precioBebida;
-    private Deposito depositoBebida;
-    
+    private DepositoBebida depositoBebida;
+    private DepositoMoneda depositoMoneda;
+
+    public Expendedora(){
+
+    }
+    public Bebida VenderBebida(){
+        
+    }
+    public Moneda Darvuelto(){
+
+    }
 }
