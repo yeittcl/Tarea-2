@@ -36,13 +36,18 @@ public class Expendedora {
     }
     
     public Moneda Darvuelto(){
+        Moneda aux;
         if(depositoMoneda.size() == 0){
             if(valorMoneda < 1000){
                 for(int i=valorMoneda; i<1000 ;i=+100){
-                    
+                    aux = new Moneda100();
+                    depositoMoneda.addMoneda(aux);
                 }
-            return null;
+            }else{
+                return null;
             }
+        }else{
+            return depositoMoneda.getMoneda();
         }
         return null;
     }
