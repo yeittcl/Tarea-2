@@ -1,8 +1,8 @@
 import java.util.ArrayList;
-public class Deposito{
+public class DepositoBebida{
     private ArrayList<Bebida> almacen;
 
-    public Deposito(){
+    public DepositoBebida(){
         almacen = new ArrayList<Bebida>();
     }
     public void addBebida(Bebida bebida){
