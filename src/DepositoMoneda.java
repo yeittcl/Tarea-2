@@ -5,14 +5,17 @@ public class DepositoMoneda{
     public DepositoMoneda(){
         almacen = new ArrayList<Moneda>();
     }
-    public void addBebida(Moneda moneda){
+    public void addMoneda(Moneda moneda){
         almacen.add(moneda);
     }
-    public Moneda getBebida(){
+    public Moneda getMoneda(){
         if(almacen.size()==0){
             return null;
         }else{
             return almacen.remove(0);
         }
+    }
+    public int size(){
+        return almacen.size();
     }
 }

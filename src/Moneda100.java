@@ -4,7 +4,7 @@ public class Moneda100 extends Moneda {
         super();
         valor = 100;
     }
-    public String getValor(){
-        return valor + "";
+    public int getValor(){
+        return valor;
     }
 }

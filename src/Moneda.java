@@ -1,6 +1,6 @@
 public abstract class Moneda {
     public Moneda(){
     }
-    public abstract String getValor();
+    public abstract int getValor();
 }
 
