@@ -12,8 +12,16 @@ public class Comprador {
         this.vuelto = 0;
     }
     public void comprarBebida(){
-        Bebida b = expend.VenderBebida(moneda,eleccion);
-        bebida = b.beber();
+        try {
+            Bebida b = expend.VenderBebida(moneda,eleccion);
+            bebida = b.beber();
+        }catch (PagoIncorrectoException e){
+            System.out.println(e.getMessage());
+        }catch (PagoInsuficienteException e){
+            System.out.println(e.getMessage());
+        }catch (NoHayBebidaException e){
+            System.out.println(e.getMessage());
+        }
     }
     public int cuantoVuelto(){
         while(true) {
