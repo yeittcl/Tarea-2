@@ -26,7 +26,7 @@ public class Expendedora {
             depositoFanta.addBebida(tempFanta);
         }
     }
-    public Bebida VenderBebida(Moneda moneda, int select){
+    public Bebida VenderBebida(Moneda moneda, int select) throws PagoIncorrectoException, PagoInsuficienteException, NoHayBebidaException{
         if(moneda.getValor() >= precioBebida){
             valorMoneda = moneda.getValor();
             switch(select){
@@ -41,6 +41,11 @@ public class Expendedora {
                     return depositoFanta.getBebida();
                 default: return null;  
             }           
+        }if(moneda.getValor() < precioBebida){
+            depositoMoneda.addMoneda(moneda);
+            throw new PagoInsuficienteException("El pago es insuficiente para la compra, intentelo nuevamente!");
+        }if(moneda == null){
+            throw new PagoIncorrectoException("Ingrese una moneda valida porfavor!");
         }
         return null;
     }
