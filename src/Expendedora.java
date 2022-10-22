@@ -27,25 +27,41 @@ public class Expendedora {
         }
     }
     public Bebida VenderBebida(Moneda moneda, int select) throws PagoIncorrectoException, PagoInsuficienteException, NoHayBebidaException{
+        if(moneda == null){
+            throw new PagoIncorrectoException("Ingrese una moneda valida porfavor!");
+        }
         if(moneda.getValor() >= precioBebida){
             valorMoneda = moneda.getValor();
             switch(select){
                 case 1:
-                    crearVuelto();
-                    return depositoCoca.getBebida();
+                    if(depositoCoca.size() == 0){
+                        depositoMoneda.addMoneda(moneda);
+                        throw new NoHayBebidaException("Fuera de Stock, intente con otro sabor!");
+                    }else {
+                        crearVuelto();
+                        return depositoCoca.getBebida();
+                    }
                 case 2:
-                    crearVuelto();
-                    return depositoSprite.getBebida();
+                    if(depositoSprite.size() == 0){
+                        depositoMoneda.addMoneda(moneda);
+                        throw new NoHayBebidaException("Fuera de Stock, intente con otro sabor!");
+                    }else {
+                        crearVuelto();
+                        return depositoSprite.getBebida();
+                    }
                 case 3:
-                    crearVuelto();
-                    return depositoFanta.getBebida();
+                    if(depositoFanta.size() == 0){
+                        depositoMoneda.addMoneda(moneda);
+                        throw new NoHayBebidaException("Fuera de Stock, intente con otro sabor!");
+                    }else {
+                        crearVuelto();
+                        return depositoFanta.getBebida();
+                    }
                 default: return null;  
             }           
         }if(moneda.getValor() < precioBebida){
             depositoMoneda.addMoneda(moneda);
             throw new PagoInsuficienteException("El pago es insuficiente para la compra, intentelo nuevamente!");
-        }if(moneda == null){
-            throw new PagoIncorrectoException("Ingrese una moneda valida porfavor!");
         }
         return null;
     }

@@ -15,4 +15,7 @@ public class DepositoBebida{
             return almacen.remove(0);
         }
     }
+    public int size(){
+        return almacen.size();
+    }
 }
