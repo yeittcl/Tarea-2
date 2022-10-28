@@ -5,7 +5,6 @@ public class Expendedora {
     private DepositoBebida depositoFanta;
     private DepositoBebida depositoSprite;
     private DepositoMoneda depositoMoneda;
-    private int valorMoneda;
     
 
     public Expendedora(int numBebida, int precioBebida){
@@ -31,14 +30,14 @@ public class Expendedora {
             throw new PagoIncorrectoException("Ingrese una moneda valida porfavor!");
         }
         if(moneda.getValor() >= precioBebida){
-            valorMoneda = moneda.getValor();
+            int valorMoneda = moneda.getValor();
             switch(select){
                 case 1:
                     if(depositoCoca.size() == 0){
                         depositoMoneda.addMoneda(moneda);
                         throw new NoHayBebidaException("Fuera de Stock, intente con otro sabor!");
                     }else {
-                        crearVuelto();
+                        crearVuelto(valorMoneda);
                         return depositoCoca.getBebida();
                     }
                 case 2:
@@ -46,7 +45,7 @@ public class Expendedora {
                         depositoMoneda.addMoneda(moneda);
                         throw new NoHayBebidaException("Fuera de Stock, intente con otro sabor!");
                     }else {
-                        crearVuelto();
+                        crearVuelto(valorMoneda);
                         return depositoSprite.getBebida();
                     }
                 case 3:
@@ -54,7 +53,7 @@ public class Expendedora {
                         depositoMoneda.addMoneda(moneda);
                         throw new NoHayBebidaException("Fuera de Stock, intente con otro sabor!");
                     }else {
-                        crearVuelto();
+                        crearVuelto(valorMoneda);
                         return depositoFanta.getBebida();
                     }
                 default: return null;  
@@ -66,9 +65,9 @@ public class Expendedora {
         return null;
     }
 
-    public void crearVuelto(){
+    public void crearVuelto(int valor){
         Moneda100 aux;
-        for (int i=precioBebida; i<valorMoneda; i+=100){
+        for (int i=precioBebida; i<valor; i+=100){
             aux = new Moneda100();
             depositoMoneda.addMoneda(aux);
         }
